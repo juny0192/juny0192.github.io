@@ -261,6 +261,8 @@ a { color: inherit; text-decoration: none; }
   gap: 20px;
 }
 
+.gallery-item--full { grid-column: span 2; }
+
 .gallery-item {
   cursor: pointer;
   overflow: hidden;

@@ -22,11 +22,16 @@
     }
   }
 
+  const lastPageNum = slots.filter(s => s.type === 'image').at(-1).pageNum;
+
   slots.forEach((slot, index) => {
     if (slot.type === 'image') {
       const num  = String(slot.pageNum).padStart(2, '0');
       const item = document.createElement('div');
       item.className = 'gallery-item';
+      if (slot.pageNum === 1 || slot.pageNum === lastPageNum) {
+        item.classList.add('gallery-item--full');
+      }
       const img = document.createElement('img');
       img.src     = `images/page-${num}.jpg`;
       img.alt     = `Portfolio page ${slot.pageNum}`;
