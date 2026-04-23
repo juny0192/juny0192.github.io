@@ -7,6 +7,19 @@
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
+  /* ── Nav links: center section in viewport on click ── */
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      const rect      = target.getBoundingClientRect();
+      const sectionH  = Math.min(rect.height, window.innerHeight);
+      const scrollTo  = window.scrollY + rect.top - (window.innerHeight - sectionH) / 2;
+      window.scrollTo({ top: Math.max(0, scrollTo), behavior: 'smooth' });
+    });
+  });
+
   /* ── Build slots array (images + AON Charlotte card) ── */
   const gallery = document.getElementById('gallery');
   const { totalPages, aonCharlottePages } = GALLERY_CONFIG;
