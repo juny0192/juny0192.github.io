@@ -20,7 +20,7 @@
     });
   });
 
-  /* ── Build slots array (images + AON Charlotte card) ── */
+  /* ── Build slots array (images + AON Charlotte, NC card) ── */
   const gallery = document.getElementById('gallery');
   const { totalPages, aonCharlottePages } = GALLERY_CONFIG;
 
@@ -57,7 +57,7 @@
       card.className = 'gallery-coming-soon';
       card.innerHTML = `
         <div class="gallery-coming-soon-inner">
-          <p class="coming-soon-project-name">AON Charlotte</p>
+          <p class="coming-soon-project-name">AON Charlotte, NC</p>
           <p class="coming-soon-note">Completed photos coming soon</p>
         </div>`;
       card.style.cursor = 'pointer';
@@ -78,7 +78,7 @@
   const lbCS = document.createElement('div');
   lbCS.className = 'lb-coming-soon';
   lbCS.innerHTML = `
-    <p class="lb-cs-title">AON Charlotte</p>
+    <p class="lb-cs-title">AON Charlotte, NC</p>
     <p class="lb-cs-note">Completed photos coming soon</p>`;
   lb.appendChild(lbCS);
 
