@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jun Jung — Interior Designer</title>
+  <meta name="description" content="Portfolio of Jun Jung, commercial interior designer specializing in vibrant, functional workplace environments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#">Jun Jung</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Commercial Interior Design</p>
+      <h1>Jun Jung</h1>
+      <p class="hero-tagline">Creating spaces that inspire people and empower brands</p>
+      <a href="#portfolio" class="hero-cta">View Portfolio</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">About</div>
+      <div class="about-content">
+        <h2>Designing for people,<br>crafted for purpose</h2>
+        <p class="about-bio">
+          With years of experience as a commercial interior designer, I specialize in creating vibrant and functional environments that enhance productivity and reflect each company's unique brand identity. My approach focuses on thoughtful space planning, attention to detail, and selecting design solutions that support both the needs of users and the goals of the business. I am dedicated to delivering interiors that inspire and elevate the user experience.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-label">Portfolio</div>
+      <h2>Selected Work</h2>
+    </div>
+
+    <!-- AON Charlotte — Coming Soon -->
+    <div class="coming-soon-project">
+      <div class="coming-soon-inner">
+        <div class="coming-soon-tag">Selected Project</div>
+        <h3 class="coming-soon-title">AON Charlotte</h3>
+        <p class="coming-soon-desc">Commercial office interior — photography coming soon</p>
+        <div class="coming-soon-line"></div>
+      </div>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="gallery" id="gallery">
+      <!-- Populated by main.js -->
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2>Let's work together</h2>
+      <div class="contact-links">
+        <a href="mailto:juny0192@gmail.com" class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">juny0192@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/junj" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/junj</span>
+        </a>
+        <a href="assets/portfolio.pdf" download class="contact-item download-btn">
+          <span class="contact-label">Portfolio</span>
+          <span class="contact-value">Download PDF ↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Jun Jung. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button class="lb-close" aria-label="Close">×</button>
+    <button class="lb-prev" aria-label="Previous">‹</button>
+    <button class="lb-next" aria-label="Next">›</button>
+    <div class="lb-img-wrap">
+      <img class="lb-img" src="" alt="Portfolio page" />
+    </div>
+  </div>
+
+  <script src="js/gallery-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
