@@ -7,31 +7,34 @@
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  /* ── Gallery ── */
+  /* ── Build slots array (images + AON Charlotte card) ── */
   const gallery = document.getElementById('gallery');
   const { totalPages, aonCharlottePages } = GALLERY_CONFIG;
 
-  const pages = [];
+  // Each slot is { type:'image', pageNum } or { type:'coming-soon' }
+  const slots = [];
   for (let i = 1; i <= totalPages; i++) {
-    if (!aonCharlottePages.includes(i)) pages.push(i);
+    if (!aonCharlottePages.includes(i)) {
+      slots.push({ type: 'image', pageNum: i });
+    }
+    if (i === 20) {
+      slots.push({ type: 'coming-soon' });
+    }
   }
 
-  pages.forEach((pageNum) => {
-    const num  = String(pageNum).padStart(2, '0');
-    const src  = `images/page-${num}.jpg`;
-    const item = document.createElement('div');
-    item.className = 'gallery-item';
-    item.dataset.index = pages.indexOf(pageNum);
-    const img = document.createElement('img');
-    img.src   = src;
-    img.alt   = `Portfolio page ${pageNum}`;
-    img.loading = 'lazy';
-    item.appendChild(img);
-    item.addEventListener('click', () => openLightbox(pages.indexOf(pageNum)));
-    gallery.appendChild(item);
-
-    // Insert AON Charlotte placeholder card after page 20
-    if (pageNum === 20) {
+  slots.forEach((slot, index) => {
+    if (slot.type === 'image') {
+      const num  = String(slot.pageNum).padStart(2, '0');
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      const img = document.createElement('img');
+      img.src     = `images/page-${num}.jpg`;
+      img.alt     = `Portfolio page ${slot.pageNum}`;
+      img.loading = 'lazy';
+      item.appendChild(img);
+      item.addEventListener('click', () => openLightbox(index));
+      gallery.appendChild(item);
+    } else {
       const card = document.createElement('div');
       card.className = 'gallery-coming-soon';
       card.innerHTML = `
@@ -39,21 +42,33 @@
           <p class="coming-soon-project-name">AON Charlotte</p>
           <p class="coming-soon-note">Completed photos coming soon</p>
         </div>`;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => openLightbox(index));
       gallery.appendChild(card);
     }
   });
 
   /* ── Lightbox ── */
-  const lb      = document.getElementById('lightbox');
-  const lbImg   = lb.querySelector('.lb-img');
-  const lbClose = lb.querySelector('.lb-close');
-  const lbPrev  = lb.querySelector('.lb-prev');
-  const lbNext  = lb.querySelector('.lb-next');
-  let current   = 0;
+  const lb        = document.getElementById('lightbox');
+  const lbImgWrap = lb.querySelector('.lb-img-wrap');
+  const lbImg     = lb.querySelector('.lb-img');
+  const lbClose   = lb.querySelector('.lb-close');
+  const lbPrev    = lb.querySelector('.lb-prev');
+  const lbNext    = lb.querySelector('.lb-next');
+
+  // Add coming-soon panel inside lightbox
+  const lbCS = document.createElement('div');
+  lbCS.className = 'lb-coming-soon';
+  lbCS.innerHTML = `
+    <p class="lb-cs-title">AON Charlotte</p>
+    <p class="lb-cs-note">Completed photos coming soon</p>`;
+  lb.appendChild(lbCS);
+
+  let current = 0;
 
   function openLightbox(index) {
     current = index;
-    showImage(current);
+    showSlot(current);
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -63,19 +78,27 @@
     document.body.style.overflow = '';
   }
 
-  function showImage(index) {
-    const num = String(pages[index]).padStart(2, '0');
-    lbImg.src = `images/page-${num}.jpg`;
+  function showSlot(index) {
+    const slot = slots[index];
+    if (slot.type === 'image') {
+      const num = String(slot.pageNum).padStart(2, '0');
+      lbImg.src = `images/page-${num}.jpg`;
+      lbImgWrap.style.display = '';
+      lbCS.style.display = 'none';
+    } else {
+      lbImgWrap.style.display = 'none';
+      lbCS.style.display = 'flex';
+    }
   }
 
   function prev() {
-    current = (current - 1 + pages.length) % pages.length;
-    showImage(current);
+    current = (current - 1 + slots.length) % slots.length;
+    showSlot(current);
   }
 
   function next() {
-    current = (current + 1) % pages.length;
-    showImage(current);
+    current = (current + 1) % slots.length;
+    showSlot(current);
   }
 
   lbClose.addEventListener('click', closeLightbox);
@@ -83,13 +106,13 @@
   lbNext.addEventListener('click', next);
 
   lb.addEventListener('click', (e) => {
-    if (e.target === lb || e.target === lb.querySelector('.lb-img-wrap')) closeLightbox();
+    if (e.target === lb) closeLightbox();
   });
 
   document.addEventListener('keydown', (e) => {
     if (!lb.classList.contains('active')) return;
-    if (e.key === 'Escape')      closeLightbox();
-    if (e.key === 'ArrowLeft')   prev();
-    if (e.key === 'ArrowRight')  next();
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  prev();
+    if (e.key === 'ArrowRight') next();
   });
 })();
