@@ -182,10 +182,18 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.01em;
 }
 
+.about-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.about-header .section-label { margin-bottom: 0; }
+
 .about-credentials {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 12px;
 }
 
 .about-credentials span {
