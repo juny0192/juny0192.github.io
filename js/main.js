@@ -29,6 +29,18 @@
     item.appendChild(img);
     item.addEventListener('click', () => openLightbox(pages.indexOf(pageNum)));
     gallery.appendChild(item);
+
+    // Insert AON Charlotte placeholder card after page 20
+    if (pageNum === 20) {
+      const card = document.createElement('div');
+      card.className = 'gallery-coming-soon';
+      card.innerHTML = `
+        <div class="gallery-coming-soon-inner">
+          <p class="coming-soon-project-name">AON Charlotte</p>
+          <p class="coming-soon-note">Completed photos coming soon</p>
+        </div>`;
+      gallery.appendChild(card);
+    }
   });
 
   /* ── Lightbox ── */

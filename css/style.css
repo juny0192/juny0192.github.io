@@ -400,6 +400,35 @@ footer p {
 .lb-prev  { left: 24px;  top: 50%; transform: translateY(-50%); font-size: 3rem; }
 .lb-next  { right: 24px; top: 50%; transform: translateY(-50%); font-size: 3rem; }
 
+/* ─── Inline Coming Soon Card ─── */
+.gallery-coming-soon {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.gallery-coming-soon-inner {
+  text-align: center;
+}
+
+.coming-soon-project-name {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.coming-soon-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  letter-spacing: 0.06em;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
   .about-content { grid-template-columns: 1fr; gap: 36px; }
