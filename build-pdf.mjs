@@ -75,31 +75,24 @@ for (let pageNum = 1; pageNum <= TOTAL_PAGES; pageNum++) {
 
   // ── Cover page (page 1): 1224×1584 ───────────────────────────────────────
   if (pageNum === 1) {
-    // Phone was at image y=637-658, x=360-740
-    // PDF coords (y flipped): y_bot = H-658 = 926, y_top = H-637 = 947
-    const phoneX1 = 360, phoneY1 = H - 658, phoneX2 = 740, phoneY2 = H - 637;
+    // Phone was at image y=957-972, x=555-669 (centered on page)
+    // URL text drawn on image at y=964, centered at x=612
+    // PDF coords (y flipped from bottom): y_bot = H-972 = 612, y_top = H-953 = 631
+    const urlY1 = H - 976, urlY2 = H - 953;
+    const urlX1 = 447, urlX2 = 777;
 
-    // Draw website URL text where phone was
-    page.drawText('juny0192.github.io', {
-      x:     phoneX1,
-      y:     phoneY1 + 2,
-      size:  19,
-      font:  helvetica,
-      color: accentColor,
-    });
-
-    // Hyperlink over the URL text
+    // Hyperlink over the URL text already drawn on the image
     addLink(pdfDoc, page, {
-      x1: phoneX1, y1: phoneY1,
-      x2: phoneX2, y2: phoneY2,
+      x1: urlX1, y1: urlY1,
+      x2: urlX2, y2: urlY2,
       url: 'https://juny0192.github.io/',
     });
 
-    // Email text is at image y=881-904, x=447-776
-    // PDF coords: y_bot = H-904 = 680, y_top = H-881 = 703
+    // Email text is at image y=920-939, x=513-710
+    // PDF coords: y_bot = H-939 = 645, y_top = H-920 = 664
     addLink(pdfDoc, page, {
-      x1: 447, y1: H - 904,
-      x2: 776, y2: H - 881,
+      x1: 513, y1: H - 939,
+      x2: 710, y2: H - 920,
       url: 'mailto:juny0192@gmail.com',
     });
 
@@ -108,31 +101,34 @@ for (let pageNum = 1; pageNum <= TOTAL_PAGES; pageNum++) {
 
   // ── Last page (page 32): 1224×1584 ───────────────────────────────────────
   if (pageNum === 32) {
-    // Phone was at image y=685-715, x=360-740
-    // PDF coords: y_bot = H-715 = 869, y_top = H-685 = 899
-    const phoneX1 = 286, phoneY1 = H - 715, phoneX2 = 680, phoneY2 = H - 685;
+    // Phone was at image y=855-865, inside card x=290-932
+    // URL text drawn on image at y=859, centered at x=611
+    // PDF coords: y_bot = H-870 = 714, y_top = H-848 = 736
+    const urlY1 = H - 870, urlY2 = H - 848;
+    const urlX1 = 350, urlX2 = 870;
 
-    // Draw website URL text where phone was
+    // Draw website URL text (as PDF text layer — invisible since image already has it,
+    // but needed so the hyperlink annotation has something to attach to)
     page.drawText('juny0192.github.io', {
-      x:     phoneX1,
-      y:     phoneY1 + 2,
-      size:  19,
+      x:     urlX1,
+      y:     urlY1 + 2,
+      size:  0.1,  // near-invisible — text is already baked into image
       font:  helvetica,
       color: accentColor,
     });
 
-    // Hyperlink over URL
+    // Hyperlink over URL (image y=848-870)
     addLink(pdfDoc, page, {
-      x1: phoneX1, y1: phoneY1,
-      x2: phoneX2, y2: phoneY2,
+      x1: urlX1, y1: urlY1,
+      x2: urlX2, y2: urlY2,
       url: 'https://juny0192.github.io/',
     });
 
-    // Email is at image y=772-791, x=286-684
-    // PDF coords: y_bot = H-791 = 793, y_top = H-772 = 812
+    // Email is at image y=882-894, x=290-932
+    // PDF coords: y_bot = H-894 = 690, y_top = H-882 = 702
     addLink(pdfDoc, page, {
-      x1: 286, y1: H - 791,
-      x2: 684, y2: H - 772,
+      x1: 290, y1: H - 894,
+      x2: 932, y2: H - 882,
       url: 'mailto:juny0192@gmail.com',
     });
 
