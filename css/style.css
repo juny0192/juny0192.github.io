@@ -144,6 +144,13 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.8;
 }
 
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
 .hero-cta {
   display: inline-block;
   font-size: 0.75rem;
@@ -332,6 +339,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gallery-item:hover::after { opacity: 1; }
+
+/* Hide prev/next in standalone resume view */
+.lightbox.resume-mode .lb-prev,
+.lightbox.resume-mode .lb-next { display: none; }
 
 /* ─── Image protection (applies to all portfolio + resume images) ─── */
 .gallery-item img,
