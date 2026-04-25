@@ -66,26 +66,6 @@
     }
   });
 
-  /* ── Resume section ── */
-  const resumeWrap = document.getElementById('resume-wrap');
-  if (resumeWrap) {
-    const RESUME_PAGES = 1;  // matches images/resume/resume-NN.jpg count
-    for (let i = 1; i <= RESUME_PAGES; i++) {
-      const num = String(i).padStart(2, '0');
-      const page = document.createElement('div');
-      page.className = 'resume-page';
-      const img = document.createElement('img');
-      img.src = `images/resume/resume-${num}.jpg`;
-      img.alt = `Resume page ${i}`;
-      img.loading = 'lazy';
-      const overlay = document.createElement('div');
-      overlay.className = 'img-protect-overlay';
-      page.appendChild(img);
-      page.appendChild(overlay);
-      resumeWrap.appendChild(page);
-    }
-  }
-
   /* ── Image-download deterrents (right-click + drag) ── */
   document.addEventListener('contextmenu', (e) => {
     if (e.target.tagName === 'IMG' || e.target.classList.contains('img-protect-overlay')) {
@@ -152,6 +132,46 @@
   lbClose.addEventListener('click', closeLightbox);
   lbPrev.addEventListener('click', prev);
   lbNext.addEventListener('click', next);
+
+  /* ── View Resume button (hero) — opens lightbox standalone ── */
+  let resumeMode = false;
+  const resumeBtn = document.getElementById('view-resume-btn');
+  if (resumeBtn) {
+    resumeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      resumeMode = true;
+      lbImg.src = 'images/resume/resume-01.jpg';
+      lbImgWrap.style.display = '';
+      lbCS.style.display = 'none';
+      lbPrev.style.display = 'none';
+      lbNext.style.display = 'none';
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  // Restore prev/next visibility when closing resume mode
+  const _origClose = closeLightbox;
+  lbClose.addEventListener('click', () => {
+    if (resumeMode) {
+      lbPrev.style.display = '';
+      lbNext.style.display = '';
+      resumeMode = false;
+    }
+  });
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb && resumeMode) {
+      lbPrev.style.display = '';
+      lbNext.style.display = '';
+      resumeMode = false;
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeMode) {
+      lbPrev.style.display = '';
+      lbNext.style.display = '';
+      resumeMode = false;
+    }
+  });
 
   lb.addEventListener('click', (e) => {
     if (e.target === lb) closeLightbox();
