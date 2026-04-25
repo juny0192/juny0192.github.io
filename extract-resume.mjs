@@ -8,7 +8,7 @@ const __dir     = fileURLToPath(new URL('.', import.meta.url));
 const CHROME    = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const PDF_PATH  = 'C:\\Users\\juny0\\Downloads\\Byungjun (Jun) Jung — Interior Designer.pdf';
 const OUT_DIR   = join(__dir, 'images', 'resume');
-const SCALE     = 2.5;
+const SCALE     = 4.5;
 const PORT      = 54323;
 
 mkdirSync(OUT_DIR, { recursive: true });
@@ -61,7 +61,7 @@ for (let i = 1; i <= numPages; i++) {
   await tab.goto(`http://127.0.0.1:${PORT}/render.html?page=${i}`, { waitUntil: 'networkidle0' });
   await tab.waitForFunction(() => document.title === 'done', { timeout: 60000 });
   const jpegB64 = await tab.evaluate(() =>
-    document.getElementById('c').toDataURL('image/jpeg', 0.92).split(',')[1]
+    document.getElementById('c').toDataURL('image/jpeg', 0.96).split(',')[1]
   );
   const num = String(i).padStart(2, '0');
   writeFileSync(join(OUT_DIR, `resume-${num}.jpg`), Buffer.from(jpegB64, 'base64'));
