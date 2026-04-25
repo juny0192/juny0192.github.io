@@ -66,6 +66,36 @@
     }
   });
 
+  /* ── Resume section ── */
+  const resumeWrap = document.getElementById('resume-wrap');
+  if (resumeWrap) {
+    const RESUME_PAGES = 1;  // matches images/resume/resume-NN.jpg count
+    for (let i = 1; i <= RESUME_PAGES; i++) {
+      const num = String(i).padStart(2, '0');
+      const page = document.createElement('div');
+      page.className = 'resume-page';
+      const img = document.createElement('img');
+      img.src = `images/resume/resume-${num}.jpg`;
+      img.alt = `Resume page ${i}`;
+      img.loading = 'lazy';
+      const overlay = document.createElement('div');
+      overlay.className = 'img-protect-overlay';
+      page.appendChild(img);
+      page.appendChild(overlay);
+      resumeWrap.appendChild(page);
+    }
+  }
+
+  /* ── Image-download deterrents (right-click + drag) ── */
+  document.addEventListener('contextmenu', (e) => {
+    if (e.target.tagName === 'IMG' || e.target.classList.contains('img-protect-overlay')) {
+      e.preventDefault();
+    }
+  });
+  document.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
   /* ── Lightbox ── */
   const lb        = document.getElementById('lightbox');
   const lbImgWrap = lb.querySelector('.lb-img-wrap');
