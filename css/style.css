@@ -378,8 +378,6 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
 }
 
-.download-btn .contact-value { color: var(--accent); }
-
 /* ─── Footer ─── */
 footer {
   padding: 40px 0;
