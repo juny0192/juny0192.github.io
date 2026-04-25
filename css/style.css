@@ -344,6 +344,27 @@ a { color: inherit; text-decoration: none; }
 .lightbox.resume-mode .lb-prev,
 .lightbox.resume-mode .lb-next { display: none; }
 
+/* Resume zoom: fit-to-screen by default, click to zoom to natural size */
+.lightbox.resume-mode .lb-img-wrap {
+  max-width: 95vw;
+  max-height: 95vh;
+  overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.lightbox.resume-mode .lb-img {
+  cursor: zoom-in;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+.lightbox.resume-mode.zoomed .lb-img {
+  cursor: zoom-out;
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+}
+
 /* ─── Image protection (applies to all portfolio + resume images) ─── */
 .gallery-item img,
 .lb-img {

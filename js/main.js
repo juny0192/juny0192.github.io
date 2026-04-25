@@ -134,10 +134,22 @@
   function closeAny() {
     closeLightbox();
     if (resumeMode) {
-      lb.classList.remove('resume-mode');
+      lb.classList.remove('resume-mode', 'zoomed');
       resumeMode = false;
     }
   }
+
+  // Click resume image to toggle zoom (fit ↔ natural size)
+  lbImg.addEventListener('click', (e) => {
+    if (!resumeMode) return;
+    e.stopPropagation();
+    lb.classList.toggle('zoomed');
+    if (lb.classList.contains('zoomed')) {
+      // Scroll to top-left so user starts reading from the beginning
+      lbImgWrap.scrollTop = 0;
+      lbImgWrap.scrollLeft = 0;
+    }
+  });
 
   lbClose.addEventListener('click', closeAny);
   lbPrev.addEventListener('click', () => { if (!resumeMode) prev(); });
