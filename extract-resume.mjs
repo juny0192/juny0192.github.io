@@ -6,7 +6,7 @@ import puppeteer from 'puppeteer-core';
 
 const __dir     = fileURLToPath(new URL('.', import.meta.url));
 const CHROME    = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-const PDF_PATH  = 'C:\\Users\\juny0\\Downloads\\Byungjun (Jun) Jung — Interior Designer.pdf';
+const PDF_PATH  = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\resume\\Byungjun (Jun) Jung — Interior Designer.pdf';
 const OUT_DIR   = join(__dir, 'images', 'resume');
 const SCALE     = 4.5;
 const PORT      = 54323;
