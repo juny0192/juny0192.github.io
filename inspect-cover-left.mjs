@@ -1,6 +1,6 @@
 import { createCanvas, loadImage } from 'canvas';
 
-const img = await loadImage('C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-01.jpg');
+const img = await loadImage('C:\\Projects\\jun-jung-portfolio\\images\\page-01.jpg');
 const W = img.width, H = img.height;
 const c = createCanvas(W, H);
 const ctx = c.getContext('2d');

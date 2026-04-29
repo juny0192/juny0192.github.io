@@ -2,9 +2,9 @@ import { createCanvas, loadImage } from 'canvas';
 import { writeFileSync } from 'fs';
 import sharp from 'sharp';
 
-const ORIG = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-04.jpg';
-const SRC  = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\200-Connell-Dr-Berkeley-Heights-NJ-Primary-Photo-1-HighDefinition.jpg';
-const OUT  = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-04.jpg';
+const ORIG = 'C:\\Projects\\jun-jung-portfolio\\images\\page-04.jpg';
+const SRC  = 'C:\\Projects\\jun-jung-portfolio\\images\\200-Connell-Dr-Berkeley-Heights-NJ-Primary-Photo-1-HighDefinition.jpg';
+const OUT  = 'C:\\Projects\\jun-jung-portfolio\\images\\page-04.jpg';
 
 const orig = await loadImage(ORIG);
 const W = orig.width, H = orig.height;  // 2448×1584

@@ -1,7 +1,7 @@
 import { createCanvas, loadImage } from 'canvas';
 
 async function scan(filename, label) {
-  const img = await loadImage(`C:\\Users\\juny0\\jun-jung-portfolio\\images\\${filename}`);
+  const img = await loadImage(`C:\\Projects\\jun-jung-portfolio\\images\\${filename}`);
   const W = img.width, H = img.height;
   console.log(`\n=== ${label} (${W}x${H}) ===`);
 

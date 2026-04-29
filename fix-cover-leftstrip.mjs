@@ -2,8 +2,8 @@ import { createCanvas, loadImage } from 'canvas';
 import { writeFileSync, readFileSync } from 'fs';
 import { PDFDocument } from 'pdf-lib';
 
-const IMG_PATH = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-01.jpg';
-const SRC_PDF  = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\Portfolio 2026 _new.pdf';
+const IMG_PATH = 'C:\\Projects\\jun-jung-portfolio\\images\\page-01.jpg';
+const SRC_PDF  = 'C:\\Projects\\jun-jung-portfolio\\images\\Portfolio 2026 _new.pdf';
 
 // ── 1. Fix the JPG ───────────────────────────────────────────────────────────
 const img = await loadImage(IMG_PATH);

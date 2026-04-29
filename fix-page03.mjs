@@ -1,7 +1,7 @@
 import { createCanvas, loadImage } from 'canvas';
 import { writeFileSync } from 'fs';
 
-const imgPath = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-03.jpg';
+const imgPath = 'C:\\Projects\\jun-jung-portfolio\\images\\page-03.jpg';
 const img = await loadImage(imgPath);
 const W = img.width, H = img.height;
 

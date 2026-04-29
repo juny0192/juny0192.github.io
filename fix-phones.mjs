@@ -3,7 +3,7 @@ import { writeFileSync } from 'fs';
 
 // ── Page 1 fix ────────────────────────────────────────────────────────────────
 {
-  const PATH = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-01.jpg';
+  const PATH = 'C:\\Projects\\jun-jung-portfolio\\images\\page-01.jpg';
   const img  = await loadImage(PATH);
   const W = img.width, H = img.height;  // 1224×1584
 
@@ -44,7 +44,7 @@ import { writeFileSync } from 'fs';
 
 // ── Page 32 fix ───────────────────────────────────────────────────────────────
 {
-  const PATH = 'C:\\Users\\juny0\\jun-jung-portfolio\\images\\page-32.jpg';
+  const PATH = 'C:\\Projects\\jun-jung-portfolio\\images\\page-32.jpg';
   const img  = await loadImage(PATH);
   const W = img.width, H = img.height;  // 1224×1584
 
