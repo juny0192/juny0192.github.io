@@ -30,9 +30,6 @@
     if (!aonCharlottePages.includes(i)) {
       slots.push({ type: 'image', pageNum: i });
     }
-    if (i === 20) {
-      slots.push({ type: 'coming-soon' });
-    }
   }
 
   const lastPageNum = slots.filter(s => s.type === 'image').at(-1).pageNum;
@@ -52,17 +49,6 @@
       item.appendChild(img);
       item.addEventListener('click', () => openLightbox(index));
       gallery.appendChild(item);
-    } else {
-      const card = document.createElement('div');
-      card.className = 'gallery-coming-soon';
-      card.innerHTML = `
-        <div class="gallery-coming-soon-inner">
-          <p class="coming-soon-project-name">AON Charlotte, NC</p>
-          <p class="coming-soon-note">Completed photos coming soon</p>
-        </div>`;
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', () => openLightbox(index));
-      gallery.appendChild(card);
     }
   });
 
@@ -84,14 +70,6 @@
   const lbPrev    = lb.querySelector('.lb-prev');
   const lbNext    = lb.querySelector('.lb-next');
 
-  // Add coming-soon panel inside lightbox
-  const lbCS = document.createElement('div');
-  lbCS.className = 'lb-coming-soon';
-  lbCS.innerHTML = `
-    <p class="lb-cs-title">AON Charlotte, NC</p>
-    <p class="lb-cs-note">Completed photos coming soon</p>`;
-  lb.appendChild(lbCS);
-
   let current = 0;
 
   function openLightbox(index) {
@@ -108,15 +86,9 @@
 
   function showSlot(index) {
     const slot = slots[index];
-    if (slot.type === 'image') {
-      const num = String(slot.pageNum).padStart(2, '0');
-      lbImg.src = `images/page-${num}.jpg`;
-      lbImgWrap.style.display = '';
-      lbCS.style.display = 'none';
-    } else {
-      lbImgWrap.style.display = 'none';
-      lbCS.style.display = 'flex';
-    }
+    const num = String(slot.pageNum).padStart(2, '0');
+    lbImg.src = `images/page-${num}.jpg`;
+    lbImgWrap.style.display = '';
   }
 
   function prev() {
@@ -174,7 +146,6 @@
       resumeMode = true;
       lbImg.src = 'images/resume/resume-01.jpg';
       lbImgWrap.style.display = '';
-      lbCS.style.display = 'none';
       lb.classList.add('resume-mode');
       lb.classList.add('active');
       document.body.style.overflow = 'hidden';
